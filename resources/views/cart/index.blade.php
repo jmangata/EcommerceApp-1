@@ -45,13 +45,13 @@
                         <p class="text-gray-500">{{ $item->quantity }}</p>
                    
                           
-                         <div class="flex"> 
-                          <form action="{{route('cart.remove'),$item}}" method="post">
+                         {{-- <div class="flex"> 
+                          <form action="{{route('cart.remove'),$item->id}}" method="post">
                             @csrf 
                             @method('DELETE')
                           <button type="submit" class="font-medium text-indigo-600 hover:text-indigo-500">Remove</button>
                           </form>
-                        </div>
+                        </div> --}}
                         
                       </div>
                     </div>
