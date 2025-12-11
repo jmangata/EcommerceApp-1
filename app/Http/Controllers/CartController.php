@@ -1,4 +1,3 @@
--- Active: 1764773431553@@127.0.0.1@3306@ecommerce
 <?php
 
 namespace App\Http\Controllers;
@@ -26,18 +25,18 @@ class CartController extends Controller
     public function add(Product $product)
     {
         // Vérifie que le produit est disponible
-        if (!$product->in_stock) {
+        if (!$product->in_stock) { // si le produit n'est pas en stock affiche un message d'erreur
             return back()->with('error', 'Ce produit n\'est plus en stock.');
         }
 
-        $cart = auth()->user()->getOrCreateCart();
+        $cart = auth()->user()->getOrCreateCart();// retourne le panier de l'utilisateur ou en crée un nouveau s'il n'existe pas
 
         // Vérifie si le produit est déjà dans le panier
         $cartItem = $cart->items()->where('product_id', $product->id)->first();
 
         if ($cartItem) {
             // Incrémente la quantité si déjà présent
-            $cartItem->increment();
+            $cartItem->incrementQuantity();
             $message = 'Quantité mise à jour dans votre panier.';
         } else {
             // Ajoute un nouvel item
