@@ -22,7 +22,9 @@
                 @yield('content')
             </div>
 
-
+            <div>
+             <x-promotional-banner/>
+        </div>
             
         </main>
         
